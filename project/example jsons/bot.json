@@ -7,7 +7,8 @@
         "armR":{arm},
         "legs":{legs}
     },
-    "description":""
+    "description":"",
+    "popularity":5
 
     
 }

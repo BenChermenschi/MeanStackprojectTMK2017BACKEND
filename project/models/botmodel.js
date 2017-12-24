@@ -4,8 +4,9 @@ var mongooseUniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 
 var botSchema = new Schema({
-    creator:{type:Schema.Types.ObjectId, ref:'User'},
+    creator:{type:String,required:true,unique:false},
     botname:{type:String,required:true,unique:true},
+    passcode:{type:String,required:true,unique:false},
     parts:{
         head:{type:Schema.Types.ObjectId, ref:'Part'},
         body:{type:Schema.Types.ObjectId, ref:'Part'},
@@ -16,9 +17,9 @@ var botSchema = new Schema({
     description:{type:String,required:false,unique:false}
 });
 
-schema.plugin(mongooseUniqueValidator);
-
-const bots = module.exports = mongoose.model('Bot',botSchema);
+botSchema.plugin(mongooseUniqueValidator);
+//exporting botscheme
+const bots = module.exports = mongoose.model("Bot",botSchema);
 
 module.exports.getBots = function (callback) {
     console.log('grabbing all bots in hangar' + id);
