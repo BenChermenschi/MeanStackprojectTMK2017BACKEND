@@ -41,5 +41,13 @@ module.exports = function (app) {
     app.use(routerprefix+'/manufacturer',manufacturerRouter);
     app.use(routerprefix+'/parttype',parttypeRouter);
     //app.use(routerprefix+'/user')
+    MOETE NOG FF DOEN
+    //TODO zien dat uw routes werken met id verwijzingen naar objecten,
+    //TODO zien dat je data kunt uitlezen
+    //TODO zien dat je data kunt wegschrijven
+    //TODO zien dat je data kunt wijzigen
+    //TODO zien dat je data kunt verwijderen
+    //TODO frontend daarna schrijven
+
 }
 
