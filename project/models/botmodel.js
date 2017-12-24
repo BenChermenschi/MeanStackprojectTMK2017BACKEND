@@ -22,7 +22,7 @@ botSchema.plugin(mongooseUniqueValidator);
 const bots = module.exports = mongoose.model("Bot",botSchema);
 
 module.exports.getBots = function (callback) {
-    console.log('grabbing all bots in hangar' + id);
+    console.log('grabbing all bots in hangar');
     bots.find({},callback);
 }
 

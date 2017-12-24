@@ -24,6 +24,8 @@ module.exports = router;*/
 //importing models
 const Bot = require('./models/botmodel');
 const Part = require('./models/partmodel');
+const Parttype = require('./models/parttypemodel');
+const Manufacturer = require('./models/manufacturermodel');
 
 module.exports = function (app) {
     const routerprefix = '/api';
@@ -36,8 +38,8 @@ module.exports = function (app) {
 
     app.use( routerprefix+ '/bot',botRouter);
     app.use(routerprefix+'/part',partRouter);
- //   app.use(routerprefix+'/manufacturer',manufacturerRouter);
- //   app.use(routerprefix+'/parttype',parttypeRouter);
+    app.use(routerprefix+'/manufacturer',manufacturerRouter);
+    app.use(routerprefix+'/parttype',parttypeRouter);
     //app.use(routerprefix+'/user')
 }
 

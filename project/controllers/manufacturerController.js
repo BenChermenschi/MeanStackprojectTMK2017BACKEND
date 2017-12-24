@@ -1,12 +1,11 @@
 var mongoose = require('mongoose');
-var Part = mongoose.model('Part');
-var Parttype = mongoose.model('Parttype');
-var Manufacturer = mongoose.model('Manufacturer');
+var manufacturer = mongoose.model('Manufacturer');
 
-//GET : all parts
-exports.getAllParts = function(req,res,next){
-    //grab all Parts
-    Part.find().exec(function (err,Parts){
+
+//GET : all manufacturers
+exports.getAllManufacturers = function(req,res,next){
+    //grab all manufacturers
+    manufacturer.find().exec(function (err,manufacturers){
         //on fail
         if (err){
             return res.status(500).json({
@@ -17,14 +16,14 @@ exports.getAllParts = function(req,res,next){
         //on success
         res.status(200).json({
             message: 'Success',
-            obj: Parts
+            obj: manufacturers
         });
     });
 }
 
-//GET : Part by Partname
-exports.getPartAtPartName = function (req,res) {
-    Part.find({name:req.params.name}).exec(function (err,Part) {
+//GET : manufacturer by botname
+exports.getManufacturerAtmanufacturerName = function (req,res) {
+    manufacturer.find({name:req.params.name}).exec(function (err,manufacturer) {
         //on fail
         if(err){
             return res.status(500).json({
@@ -34,15 +33,15 @@ exports.getPartAtPartName = function (req,res) {
         }
         res.status(200).json({
             message: 'Success',
-            obj: Part
+            obj: manufacturer
         }) ;
     });
 
 }
 
-//GET : Part by manufacturer
-exports.getPartAtManufacturer = function (req,res) {
-    Part.find({manufacturer:req.params.manufacturer}).exec(function (err,Part) {
+//GET : manufacturer by prefix
+exports.getManufacturerAtPrefix = function (req,res) {
+    manufacturer.find({prefix:req.params.prefix}).exec(function (err,manufacturer) {
         //on fail
         if(err){
             return res.status(500).json({
@@ -52,7 +51,7 @@ exports.getPartAtManufacturer = function (req,res) {
         }
         res.status(200).json({
             message: 'Success',
-            obj: Part
+            obj: manufacturer
         }) ;
     });
 
