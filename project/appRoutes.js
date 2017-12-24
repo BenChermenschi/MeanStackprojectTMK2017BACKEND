@@ -35,9 +35,9 @@ module.exports = function (app) {
     //const userRouter = require('./routes/userRoutes');
 
     app.use( routerprefix+ '/bot',botRouter);
- //   app.use('/part',partRouter);
- //   app.use('/manufacturer',manufacturerRouter);
- //   app.use('/parttype',parttypeRouter);
-    //app.use('/user')
+    app.use(routerprefix+'/part',partRouter);
+ //   app.use(routerprefix+'/manufacturer',manufacturerRouter);
+ //   app.use(routerprefix+'/parttype',parttypeRouter);
+    //app.use(routerprefix+'/user')
 }
 

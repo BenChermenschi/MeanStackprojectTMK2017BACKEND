@@ -13,7 +13,8 @@ var partSchema = new Schema({
         armorRating:{type:Number,required:true},
         damageRating:{type:Number,required:true}
     },
-    description:{type:String,required:true}
+    description:{type:String,required:true},
+    set:{type:String,required:false}
 });
 
 partSchema.plugin(mongooseUniqueValidator);
