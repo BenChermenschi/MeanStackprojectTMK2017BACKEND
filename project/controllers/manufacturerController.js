@@ -84,9 +84,9 @@ exports.postEditManufacturer = function (req,res) {
 //DELETE: delete manufacturer
 exports.deleteManufacturerAtId= function (req,res) {
     console.log("Remove request arrived");
-    manufacturer.findByIdAndRemove(req.body._id, function (err,manufacturer) {
+    manufacturer.remove({_id:req.params.id}, function (err,manufacturer) {
         console.log("request : ");
-        console.log(req.body);
+        console.log(req.param.id);
         if (err){
             console.log(err);
             res.send(err);}

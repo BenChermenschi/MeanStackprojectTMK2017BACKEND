@@ -33,7 +33,7 @@ exports.getAllParts = function(req,res,next){
 
 //GET : Part by Partname
 exports.getPartAtPartName = function (req,res) {
-    Part.find({partname:req.params.partname}).exec(function (err,Part) {
+    Part.find({partname:req.params.partname}).populate('manufacturer').exec(function (err,Part) {
         //on fail
         if(err){
             return res.status(500).json({
@@ -53,7 +53,7 @@ exports.getPartAtPartName = function (req,res) {
 exports.getPartAtId= function (req,res) {
     console.log("searching parts for _id : ");
     console.log(req.params.id);
-    Part.find({_id:req.params.id}).exec(function (err,Part) {
+    Part.find({_id:req.params.id}).populate('manufacturer').exec(function (err,Part) {
         //on fail
         if(err){
             return res.status(500).json({
@@ -71,7 +71,7 @@ exports.getPartAtId= function (req,res) {
 
 //GET : Part by manufacturer
 exports.getPartAtManufacturer = function (req,res) {
-    Part.find({manufacturer:req.params.manufacturer}).exec(function (err,Part) {
+    Part.find({manufacturer:req.params.manufacturer}).populate('manufacturer').exec(function (err,Part) {
         //on fail
         if(err){
             return res.status(500).json({
@@ -88,10 +88,8 @@ exports.getPartAtManufacturer = function (req,res) {
 
 exports.putPart = function (req,res) {
     //save
-    //TODO HIER WAS IK GEBLEVEN : moet koppelen via ID's
-    var onderdeel = new Part({
-        //EERST USER IN ORDE MAKEN
 
+    var onderdeel = new Part({
         'manufacturer':req.body.manufacturer,
         'partname':req.body.partname,
         'type':req.body.type,
