@@ -38,5 +38,14 @@ exports.getParttypeAtParttypeName = function (req,res) {
     });
 
 }
-
+/*
+//WARNING ILLEGAL METHOD!!!!
+//PUT : adding new parttype: ONLY FOR LATER VERSIONS
+exports.putParttype = function (req,res) {
+    var type = new parttype({
+        name:'LEGS'
+    });
+    type.save();
+}
+*/
 

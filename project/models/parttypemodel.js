@@ -20,3 +20,9 @@ module.exports.getParttypesById = function (id,callback) {
     console.log('searching Parttype by id : ' + id);
     parttypes.find({_id: {$in: id}},callback);
 }
+/*
+module.exports.save = function (parttype,callback) {
+    console.log('WARNING ILLEGAL HANDLING : CREATING PARTTYPE!');
+    parttype.save(callback);
+
+}*/

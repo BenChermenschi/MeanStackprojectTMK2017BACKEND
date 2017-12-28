@@ -5,20 +5,21 @@ partController = require('../controllers/partController');
 
 //LOOK AT/ search for
 partRouter.get('/',partController.getAllParts);
-partRouter.get('/name/:name',partController.getPartAtPartName);
-//partRouter.get('/id/:id',partController.getpartAtId);
+partRouter.get('/all',partController.getAllParts);
+partRouter.get('/name/:partname',partController.getPartAtPartName);
+partRouter.get('/id/:id',partController.getPartAtId);
 partRouter.get('/manufacturer/:manufacturer',partController.getPartAtManufacturer);
-/*
-//create
-partRouter.post('/produce',partController.postProducepart);
 
+//create
+partRouter.put('/add',partController.putPart);
+/*
 //update
-partRouter.put('/modify/:id',partController.putModifypartAtId);
+partRouter.post('/:id',partController.putModifypartAtId);
 
 //delete
-partRouter.delete('/scrap/:id',partController.deletepartAtId);
-
+partRouter.delete('/:id',partController.deletepartAtId);
 */
+
 
 
 

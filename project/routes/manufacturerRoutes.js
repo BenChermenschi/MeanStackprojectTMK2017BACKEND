@@ -5,20 +5,21 @@ manufacturerController = require('../controllers/manufacturerController');
 
 //LOOK AT/ search for
 manufacturerRouter.get('/',manufacturerController.getAllManufacturers);
+manufacturerRouter.get('/all',manufacturerController.getAllManufacturers);
 manufacturerRouter.get('/name/:name',manufacturerController.getManufacturerAtmanufacturerName);
 //botRouter.get('/id/:id',botController.getBotAtId);
 manufacturerRouter.get('/prefix/:prefix',manufacturerController.getManufacturerAtPrefix);
-/*
+
 //create
-botRouter.post('/produce',botController.postProduceBot);
+manufacturerRouter.put('/',manufacturerController.putManufacturer);
 
 //update
-botRouter.put('/modify/:id',botController.putModifyBotAtId);
+//manufacturerRouter.post('/edit/:id',manufacturerController.postEditManufacturerAtId);
 
 //delete
-botRouter.delete('/scrap/:id',botController.deleteBotAtId);
+manufacturerRouter.delete('/:id',manufacturerController.deleteManufacturerAtId);
 
-*/
+
 
 
 

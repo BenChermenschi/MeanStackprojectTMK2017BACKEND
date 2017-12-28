@@ -4,13 +4,13 @@ const parttypeRouter = express.Router();
 parttypeController = require('../controllers/parttypeController');
 
 //LOOK AT/ search for
-parttypeRouter.get('/',parttypeController.getAllParttypes);
+parttypeRouter.get('/all',parttypeController.getAllParttypes);
 parttypeRouter.get('/name/:name',parttypeController.getParttypeAtParttypeName);
 //botRouter.get('/id/:id',botController.getBotAtId);
 
 /*
 //create
-botRouter.post('/produce',botController.postProduceBot);
+parttypeRouter.put('/add',parttypeController.putParttype);
 
 //update
 botRouter.put('/modify/:id',botController.putModifyBotAtId);

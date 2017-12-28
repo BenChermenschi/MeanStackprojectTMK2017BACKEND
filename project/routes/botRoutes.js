@@ -8,10 +8,10 @@ botRouter.get('/',botController.getAllBots);
 botRouter.get('/name/:name',botController.getBotAtBotName);
 //botRouter.get('/id/:id',botController.getBotAtId);
 botRouter.get('/creator/:creator',botController.getBotAtCreator);
-/*
-//create
-botRouter.post('/produce',botController.postProduceBot);
 
+//create
+botRouter.put('/',botController.putBot);
+/*
 //update
 botRouter.put('/modify/:id',botController.putModifyBotAtId);
 
