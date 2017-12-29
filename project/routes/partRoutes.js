@@ -12,13 +12,13 @@ partRouter.get('/manufacturer/:manufacturer',partController.getPartAtManufacture
 
 //create
 partRouter.put('/add',partController.putPart);
-/*
+
 //update
-partRouter.post('/:id',partController.putModifypartAtId);
+partRouter.post('/:id',partController.postUpdatePartAtId);
 
 //delete
-partRouter.delete('/:id',partController.deletepartAtId);
-*/
+partRouter.delete('/:id',partController.deletePartAtId);
+
 
 
 

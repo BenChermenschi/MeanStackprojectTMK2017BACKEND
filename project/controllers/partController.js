@@ -112,3 +112,34 @@ exports.putPart = function (req,res) {
     });
 
 }
+
+//delete : delete part
+exports.deletePartAtId=function (req,res) {
+    console.log("remove request part arrived");
+    Part.remove({_id:req.params.id},function (err,onderdeel) {
+        console.log("request : ");
+        console.log(req.params.id);
+        if (err){
+            console.log(err);
+            res.send(err);}
+        else {
+            console.log("request fulfilled");
+            res.json({message:'Request fulfilled : item removed'});
+        }
+    })
+}
+
+//post : update
+exports.postUpdatePartAtId = function(req,res){
+    Part.findOneAndUpdate({_id:req.params.id},req.body,{new:true},function(err,onderdeel)  {
+        if(err){
+            console.log(err);
+            res.status(500).send({message:"could not find manufacturer at id : " + req.params.id});
+        }else{
+            console.log("updating part : ");
+            console.log(onderdeel);
+            res.json(onderdeel);
+        }
+
+    })
+}

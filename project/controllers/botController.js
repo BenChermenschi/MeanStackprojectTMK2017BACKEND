@@ -72,7 +72,52 @@ exports.getAllBots = function(req,res,next){
 
 //GET : bot by botname
 exports.getBotAtBotName = function (req,res) {
-    Bot.find({botname:req.params.botname}).exec(function (err,bot) {
+    Bot.find({botname:req.params.botname})
+        .populate({
+            path: 'parts.head',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.armR',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.armL',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.body',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.legs',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+        .exec(function (err,bot) {
         //on fail
         if(err){
             return res.status(500).json({
@@ -90,7 +135,52 @@ exports.getBotAtBotName = function (req,res) {
 
 //GET : bot by creator
 exports.getBotAtCreator = function (req,res) {
-    Bot.find({creator:req.params.creator}).exec(function (err,bot) {
+    Bot.find({creator:req.params.creator})
+        .populate({
+            path: 'parts.head',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.armR',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.armL',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.body',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.legs',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+        .exec(function (err,bot) {
         //on fail
         if(err){
             return res.status(500).json({
@@ -105,6 +195,71 @@ exports.getBotAtCreator = function (req,res) {
     });
 }
 
+//GET : by id
+exports.getBotAtId= function (req,res) {
+    console.log("searching bots for _id : ");
+    console.log(req.params.id);
+    Bot.find({_id:req.params.id})
+        .populate({
+            path: 'parts.head',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.armR',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.armL',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.body',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+
+        .populate({
+            path: 'parts.legs',
+            model: 'Part',
+            populate:{
+                path:'manufacturer',
+                model:'Manufacturer'
+            }
+        })
+        .exec(function (err,bot) {
+        //on fail
+        if(err){
+            return res.status(500).json({
+                title:'Error occured',
+                error:err
+            });
+        }
+        res.status(200).json({
+            message: 'Success',
+            obj: bot
+        }) ;
+    });
+
+}
+//Put : create bot
 exports.putBot = function (req,res) {
     console.log("create new bot");
 
@@ -125,10 +280,41 @@ exports.putBot = function (req,res) {
     console.log(bot);
     bot.save(function (err,robot) {
         if(err){
+            console.log(err);
             res.send(err);
         }else{
+            console.log("found");
             res.json(robot);
         }
     });
 };
 
+//POST : update bot
+exports.postUpdateBotAtId = function (req,res) {
+    Bot.findOneAndUpdate({_id:req.params.id},req.body,{new:true},function (err,bot) {
+        if (err){
+            console.log(err);
+            res.status(500).send({message:"could not find bot at id" + req.params.id()});
+        }else {
+            console.log("updating bot  : ");
+            console.log(bot);
+            res.json(bot);
+        }
+    })
+}
+
+//DELETE : delete bot
+exports.deleteBotAtId = function (req,res) {
+    Bot.remove({_id:req.params.id},function (err,bot) {
+        console.log("request to delete bot nr: ");
+        console.log(req.params.id);
+        if (err){
+            console.log(err);
+            res.send(err);}
+        else {
+            console.log("request fulfilled");
+            res.json({message:'Request fulfilled : item removed'});
+        }
+    })
+
+}

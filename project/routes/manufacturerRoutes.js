@@ -7,14 +7,14 @@ manufacturerController = require('../controllers/manufacturerController');
 manufacturerRouter.get('/',manufacturerController.getAllManufacturers);
 manufacturerRouter.get('/all',manufacturerController.getAllManufacturers);
 manufacturerRouter.get('/name/:name',manufacturerController.getManufacturerAtmanufacturerName);
-//botRouter.get('/id/:id',botController.getBotAtId);
+manufacturerRouter.get('/:id',manufacturerController.getManufacturerAtId);
 manufacturerRouter.get('/prefix/:prefix',manufacturerController.getManufacturerAtPrefix);
 
 //create
 manufacturerRouter.put('/',manufacturerController.putManufacturer);
 
 //update
-//manufacturerRouter.post('/edit/:id',manufacturerController.postEditManufacturerAtId);
+manufacturerRouter.post('/:id',manufacturerController.postUpdateManufacturerAtId);
 
 //delete
 manufacturerRouter.delete('/:id',manufacturerController.deleteManufacturerAtId);

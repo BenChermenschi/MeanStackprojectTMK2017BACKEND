@@ -6,19 +6,19 @@ botController = require('../controllers/botController');
 //LOOK AT/ search for
 botRouter.get('/',botController.getAllBots);
 botRouter.get('/name/:name',botController.getBotAtBotName);
-//botRouter.get('/id/:id',botController.getBotAtId);
+botRouter.get('/:id',botController.getBotAtId);
 botRouter.get('/creator/:creator',botController.getBotAtCreator);
 
 //create
 botRouter.put('/',botController.putBot);
-/*
+
 //update
-botRouter.put('/modify/:id',botController.putModifyBotAtId);
+botRouter.post('/:id',botController.postUpdateBotAtId);
 
 //delete
-botRouter.delete('/scrap/:id',botController.deleteBotAtId);
+botRouter.delete('/:id',botController.deleteBotAtId);
 
-*/
+
 
 
 
